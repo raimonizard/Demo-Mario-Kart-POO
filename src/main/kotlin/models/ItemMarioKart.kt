@@ -6,26 +6,21 @@ class ItemMarioKart {
     private var duration: Int = 0   // Durada de l'efecte en segons (0 si no aplica)
     private var power: Int = 0       // Potència o efecte de l'objecte (com més alt, més potent)
 
-    constructor(duration: Int, name: String, type: ItemType, power: Int) {
-        this.duration = duration
+    constructor(name: String, type: ItemType, duration: Int, power: Int) {
         this.name = name
         this.type = type
+        this.duration = duration
         this.power = power
     }
 
     // Mètode per aplicar l'efecte de l'objecte
-    fun applyEffect(player: String): String {
-        return when (type) {
-            ItemType.BOOST -> "$player guanya un impuls de velocitat durant $duration segons!"
-            ItemType.ATTACK -> "$player utilitza $name per atacar un oponent amb una potència de $power!"
-            ItemType.DEFENSE -> "$player utilitza $name per defensar-se d'un atac!"
-            ItemType.SPECIAL -> "$player utilitza $name i obté un avantatge especial durant $duration segons!"
+    fun applyEffect(): String {
+        return when (this.type) {
+            ItemType.BOOST -> "${this.name} guanya un impuls de velocitat durant $duration segons!"
+            ItemType.ATTACK -> "${this.name} utilitza $name per atacar un oponent amb una potència de $power!"
+            ItemType.DEFENSE -> "${this.name} utilitza $name per defensar-se d'un atac!"
+            ItemType.SPECIAL -> "${this.name} utilitza $name i obté un avantatge especial durant $duration segons!"
         }
-    }
-
-    // Mètode per descriure l'objecte
-    fun description(): String {
-        return "Nom: $name, Tipus: $type, Durada: $duration segons, Potència: $power."
     }
 
     override fun toString(): String {
